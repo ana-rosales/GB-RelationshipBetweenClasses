@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="videos.entidades">
+  <ClassDiagramComponents>
+    <Class name="Cliente" package="videos.entidades" visibility="public" xPosition="44.0" yPosition="94.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Empresa" package="videos.entidades" visibility="public" xPosition="361.0" yPosition="56.0">
+      <Fields>
+        <Field name="empleados" type="List&lt;Empleado&gt;" visibility="private"/>
+        <Field name="clientes" type="List&lt;Cliente&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="clientes" source="videos.entidades.Empresa" target="videos.entidades.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Cliente&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

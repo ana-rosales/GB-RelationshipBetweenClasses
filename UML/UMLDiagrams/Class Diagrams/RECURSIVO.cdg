@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="videos.entidades">
+  <ClassDiagramComponents>
+    <Class name="Nodo" package="videos.entidades" visibility="public" xPosition="134.0" yPosition="241.0">
+      <Fields>
+        <Field name="value" type="String" visibility="private"/>
+        <Field name="next" type="Nodo" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="untitledMethod" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Persona" package="videos.entidades" visibility="public" xPosition="132.0" yPosition="47.0">
+      <Fields>
+        <Field name="autos" type="List&lt;Auto&gt;" visibility="private"/>
+        <Field name="amigos" type="List&lt;Persona&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="next" source="videos.entidades.Nodo" target="videos.entidades.Nodo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="autos" source="videos.entidades.Persona" target="videos.entidades.Auto" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Auto&gt;"/>
+    <HasRelation name="amigos" source="videos.entidades.Persona" target="videos.entidades.Persona" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Persona&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

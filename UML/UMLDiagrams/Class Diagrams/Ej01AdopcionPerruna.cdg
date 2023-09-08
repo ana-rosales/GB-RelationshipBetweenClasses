@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ej01AdopcionPerruna">
+  <ClassDiagramComponents>
+    <Class name="Persona" package="" visibility="public" xPosition="234.0" yPosition="151.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellido" type="String" visibility="private"/>
+        <Field name="edad" type="int" visibility="private"/>
+        <Field name="documento" type="DNI" visibility="private"/>
+        <Field name="mascotas" type="List&lt;Perro&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Perro" package="" visibility="public" xPosition="534.0" yPosition="161.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="raza" type="String" visibility="private"/>
+        <Field name="edad" type="int" visibility="private"/>
+        <Field name="tamanio" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="DNI" package="" visibility="public" xPosition="234.0" yPosition="406.0">
+      <Fields>
+        <Field name="serie" type="String" visibility="private"/>
+        <Field name="num" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="documento" source="Persona" target="DNI" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="mascotas" source="Persona" target="Perro" type="Aggregation" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="videos.entidades">
+  <ClassDiagramComponents>
+    <Class name="Mascota" package="videos.entidades" visibility="public" xPosition="489.0" yPosition="37.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apodo" type="String" visibility="private"/>
+        <Field name="tipo" type="String" visibility="private"/>
+        <Field name="color" type="String" visibility="private"/>
+        <Field name="edad" type="Integer" visibility="private"/>
+        <Field name="cola" type="boolean" visibility="private"/>
+        <Field name="raza" type="T" visibility="private"/>
+        <Field name="sexo" type="SexoAnimal" visibility="private"/>
+        <Field name="energia" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apodo"/>
+          <Argument type="String" name="tipo"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getApodo" returnType="String" visibility="public"/>
+        <Method name="setApodo" returnType="void" visibility="public">
+          <Argument type="String" name="apodo"/>
+        </Method>
+        <Method name="getTipo" returnType="String" visibility="public"/>
+        <Method name="setTipo" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+        </Method>
+        <Method name="getColor" returnType="String" visibility="public"/>
+        <Method name="setColor" returnType="void" visibility="public">
+          <Argument type="String" name="color"/>
+        </Method>
+        <Method name="getEdad" returnType="Integer" visibility="public"/>
+        <Method name="setEdad" returnType="void" visibility="public">
+          <Argument type="Integer" name="edad"/>
+        </Method>
+        <Method name="isCola" returnType="boolean" visibility="public"/>
+        <Method name="setCola" returnType="void" visibility="public">
+          <Argument type="boolean" name="cola"/>
+        </Method>
+        <Method name="getRaza" returnType="T" visibility="public"/>
+        <Method name="setRaza" returnType="void" visibility="public">
+          <Argument type="T" name="raza"/>
+        </Method>
+        <Method name="getSexo" returnType="SexoAnimal" visibility="public"/>
+        <Method name="setSexo" returnType="void" visibility="public">
+          <Argument type="SexoAnimal" name="sexo"/>
+        </Method>
+        <Method name="getEnergia" returnType="int" visibility="public"/>
+        <Method name="setEnergia" returnType="void" visibility="public">
+          <Argument type="int" name="energia"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Usuario" package="videos.entidades" visibility="public" xPosition="69.0" yPosition="58.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellido" type="String" visibility="private"/>
+        <Field name="dni" type="Integer" visibility="private"/>
+        <Field name="nacimiento" type="Date" visibility="private"/>
+        <Field name="pais" type="String" visibility="private"/>
+        <Field name="sexo" type="SexoHumano" visibility="private"/>
+        <Field name="mascotaFavorita" type="Mascota" visibility="private"/>
+        <Field name="mascotas" type="List&lt;Mascota&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getApellido" returnType="String" visibility="public"/>
+        <Method name="setApellido" returnType="void" visibility="public">
+          <Argument type="String" name="apellido"/>
+        </Method>
+        <Method name="getDni" returnType="Integer" visibility="public"/>
+        <Method name="setDni" returnType="void" visibility="public">
+          <Argument type="Integer" name="dni"/>
+        </Method>
+        <Method name="getNacimiento" returnType="Date" visibility="public"/>
+        <Method name="setNacimiento" returnType="void" visibility="public">
+          <Argument type="Date" name="nacimiento"/>
+        </Method>
+        <Method name="getPais" returnType="String" visibility="public"/>
+        <Method name="setPais" returnType="void" visibility="public">
+          <Argument type="String" name="pais"/>
+        </Method>
+        <Method name="getSexo" returnType="SexoHumano" visibility="public"/>
+        <Method name="setSexo" returnType="void" visibility="public">
+          <Argument type="SexoHumano" name="sexo"/>
+        </Method>
+        <Method name="getMascotaFavorita" returnType="Mascota" visibility="public"/>
+        <Method name="setMascotaFavorita" returnType="void" visibility="public">
+          <Argument type="Mascota" name="mascotaFavorita"/>
+        </Method>
+        <Method name="getMascotas" returnType="List&lt;Mascota&gt;" visibility="public"/>
+        <Method name="setMascotas" returnType="void" visibility="public">
+          <Argument type="List&lt;Mascota&gt;" name="mascotas"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="mascotaFavorita" source="videos.entidades.Usuario" target="videos.entidades.Mascota" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="videos.entidades.Usuario" target="videos.entidades.Mascota" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mascotas" source="videos.entidades.Usuario" target="videos.entidades.Mascota" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Mascota&gt;"/>
+    <HasRelation name="autos" source="videos.entidades.Persona" target="videos.entidades.Auto" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Auto&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
