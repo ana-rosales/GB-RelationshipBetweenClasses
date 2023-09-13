@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ej02RussianRoulette">
+  <ClassDiagramComponents>
+    <Class name="Revolver" package="" visibility="public" xPosition="50.0" yPosition="15.0">
+      <Fields>
+        <Field name="currentDrum" type="int" visibility="private"/>
+        <Field name="loadOfWater" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="fillGun" returnType="void" visibility="public"/>
+        <Method name="toWet" returnType="boolean" visibility="public"/>
+        <Method name="nextWaterJet" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Player" package="" visibility="public" xPosition="234.0" yPosition="15.0">
+      <Fields>
+        <Field name="ID" type="int" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="dipped" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="shot" returnType="boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Game" package="" visibility="public" xPosition="50.0" yPosition="285.0">
+      <Fields>
+        <Field name="jugadores" type="Set&lt;Player&gt;" visibility="private"/>
+        <Field name="revolver" type="Revolver" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="createGame" returnType="void" visibility="public"/>
+        <Method name="round" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="gun" source="Game" target="Revolver" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="jugadores" source="Game" target="Player" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
