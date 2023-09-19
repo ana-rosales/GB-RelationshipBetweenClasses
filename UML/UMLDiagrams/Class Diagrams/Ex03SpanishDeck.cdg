@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ex03Deck">
+  <ClassDiagramComponents>
+    <Class name="Card" package="" visibility="public" xPosition="155.0" yPosition="48.0">
+      <Fields>
+        <Field name="number" type="int" visibility="private"/>
+        <Field name="suit" type="Suit" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Deck" package="" visibility="public" xPosition="155.0" yPosition="262.0">
+      <Fields>
+        <Field name="deck" type="List&lt;Card&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="shuffle" returnType="void" visibility="public"/>
+        <Method name="nextCard" returnType="Card" visibility="public"/>
+        <Method name="availableCards" returnType="void" visibility="public"/>
+        <Method name="giveCards" returnType="int" visibility="public">
+          <Argument type="int" name="num"/>
+        </Method>
+        <Method name="showDeck" returnType="void" visibility="public"/>
+        <Method name="cardsPile" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Enum name="Suit" package="" visibility="public" xPosition="379.0" yPosition="48.0">
+      <Literals>
+        <Literal name="GOLDEN_COIN"/>
+        <Literal name="SWORDS"/>
+        <Literal name="GOBLET"/>
+        <Literal name="CLUB"/>
+      </Literals>
+    </Enum>
+    <Class name="Player" package="" visibility="public" xPosition="379.0" yPosition="226.0">
+      <Fields>
+        <Field name="hand" type="List&lt;Card&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Game" package="" visibility="public" xPosition="636.0" yPosition="262.0">
+      <Fields>
+        <Field name="deck" type="Deck" visibility="private"/>
+        <Field name="players" type="Set&lt;Player&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="createGame" returnType="void" visibility="public"/>
+        <Method name="round" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="deck" source="Deck" target="Card" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="players" source="Game" target="Player" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="deck" source="Game" target="Deck" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
