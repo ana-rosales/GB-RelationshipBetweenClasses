@@ -1,6 +1,5 @@
 package adoption.main;
 
-import adoption.services.ServicioDNI;
 import adoption.services.DoggyService;
 import adoption.services.PersonService;
 import java.util.Scanner;
@@ -11,17 +10,16 @@ import java.util.Scanner;
  */
 public class main {
 
-    private static Scanner ent = new Scanner(System.in);
+    private static final Scanner ENT = new Scanner(System.in);
 
     public static void main(String[] args) {
-        PersonService spers = new PersonService();
-        DoggyService sperr = new DoggyService();
-        ServicioDNI sdni = new ServicioDNI();
+        PersonService personService = new PersonService();
+        DoggyService dogService = new DoggyService();
         boolean opc = true, notUser;
         int sel;
         do {
-            notUser = spers.getP() == null;
-            String title = (notUser)? "MENU" : spers.getP().getName().toUpperCase();
+            notUser = personService.getPerson() == null;
+            String title = (notUser)? "MENU" : personService.getPerson().getName().toUpperCase();
             System.out.println("\n-- " + title + " --\n");
             
             if (notUser) {
@@ -41,23 +39,23 @@ public class main {
             switch (sel) {
                 case 1:
                     if (notUser) {
-                        spers.signUp();
+                        personService.signUp();
                     } else {
-                        spers.adoption(sperr);
+                        personService.adoption(dogService);
                     }
                     break;
                 case 2:
                     if (notUser) {
-                        spers.selectUser();
+                        personService.selectUser();
                     } else {
-                        spers.mostrarUsuario();
+                        personService.showUser();
                     }
                     break;
                 case 3:
                     if (notUser) {
-                        sperr.dogRegister();
+                        dogService.dogRegister();
                     } else {
-                        spers.salir();
+                        personService.signOut();
                     }
                     break;
                 case 4:
@@ -73,12 +71,12 @@ public class main {
     }
 
     public static boolean cont() {
-        return ent.nextLine().equalsIgnoreCase("Y");
+        return ENT.nextLine().equalsIgnoreCase("Y");
     }
 
     public static int sel() {
-        int sel = ent.nextInt();
-        ent.nextLine();
+        int sel = ENT.nextInt();
+        ENT.nextLine();
         return sel;
     }
 }

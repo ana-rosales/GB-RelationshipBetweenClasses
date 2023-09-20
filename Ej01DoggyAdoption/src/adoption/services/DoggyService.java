@@ -1,7 +1,6 @@
 package adoption.services;
 
 import adoption.entities.Dog;
-import java.util.AbstractMap.SimpleEntry;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -30,24 +29,24 @@ public class DoggyService {
     }
 
     public void dogRegister() {
-        Dog p = dogCreation();
-        getDogPound().put(getDogPound().size() + 101, p);
+        Dog dog = dogCreation();
+        getDogPound().put(getDogPound().size() + 101, dog);
         System.out.println(getDogPound().size());
     }
 
     public Dog dogCreation() {
         System.out.println("\n -- DOG REGISTER --\n");
-        Dog d = new Dog();
+        Dog dog = new Dog();
         System.out.print("Name: ");
-        d.setName(ent.nextLine());
+        dog.setName(ent.nextLine());
         System.out.print("Breed: ");
-        d.setBreed(ent.nextLine());
+        dog.setBreed(ent.nextLine());
         System.out.print("Age: ");
-        d.setAge(ent.nextInt());
+        dog.setAge(ent.nextInt());
         ent.nextLine();
         System.out.print("Size: ");
-        d.setSize(ent.nextLine());
-        return d;
+        dog.setSize(ent.nextLine());
+        return dog;
     }
 
     /**
@@ -58,21 +57,21 @@ public class DoggyService {
     public Entry<Integer, Dog> dogSelection() {
         System.out.println("\n -- DOG SELECTION --\n");
         System.out.print("Dog's ID: ");
-        int sel = ent.nextInt();
+        int selection = ent.nextInt();
         ent.nextLine();
 
-        Entry<Integer, Dog> d = null;
-        if (getDogPound().containsKey(sel)) {
+        Entry<Integer, Dog> dog = null;
+        if (getDogPound().containsKey(selection)) {
             for (Entry<Integer, Dog> entry : getDogPound().entrySet()) {
-                if (entry.getKey() == sel) {
-                    d = entry;
+                if (entry.getKey() == selection) {
+                    dog = entry;
                     break;
                 }
             }
-            return d;
+            return dog;
         } else {
             System.out.println("Dog not found.");
-            return d;
+            return dog;
         }
     }
 

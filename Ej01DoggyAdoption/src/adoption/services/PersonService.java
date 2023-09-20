@@ -2,7 +2,9 @@
 package adoption.services;
 
 import adoption.entities.Person;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -12,49 +14,49 @@ import java.util.Scanner;
  */
 public class PersonService {
     private static Scanner ent;
-    private static HashMap<String,Person> users;
-    private Person p;
-    private ServicioDNI dnis;
+    private static List<Person> users;
+    private Person person;
+    private ServicioDNI dniService;
 
     public PersonService() {
         ent = new Scanner(System.in);
-        users = new HashMap<>();
-        dnis = new ServicioDNI();
+        users = new ArrayList<>();
+        dniService = new ServicioDNI();
     }
 
-    public static HashMap<String, Person> getUsers() {
+    public static List<Person> getUsers() {
         return users;
     }
 
-    public static void setUsers(HashMap<String, Person> users) {
+    public static void setUsers(ArrayList<Person> users) {
         PersonService.users = users;
     }
 
-    public Person getP() {
-        return p;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setP(Person p) {
-        this.p = p;
+    public void setPerson(Person person) {
+        this.person = person;
     }
     
     public void signUp(){
-        Person p = createUser();
-        users.put(p.getDocument().toString(), p);
+        Person newUser = createUser();
+        users.add(newUser);
     }
     
     public Person createUser(){
         System.out.println("\n -- SIGN UP -- \n");
-        Person p = new Person();
+        Person newUser = new Person();
         System.out.print("First name: ");
-        p.setName(ent.nextLine());
+        newUser.setName(ent.nextLine());
         System.out.print("Last name: ");
-        p.setLastName(ent.nextLine());
+        newUser.setLastName(ent.nextLine());
         System.out.print("Age: ");
-        p.setAge(ent.nextInt());
+        newUser.setAge(ent.nextInt());
         ent.nextLine();
-        p.setDocument(dnis.createDNI());
-        return p;
+        newUser.setDocument(dniService.createDNI());
+        return newUser;
     }
     
     public void selectUser(){
@@ -62,8 +64,8 @@ public class PersonService {
         System.out.println("\n -- LOG IN -- \n");
         System.out.print("DNI = ");
         String dni = ent.nextLine();
-        p = users.get(dni);
-        if(p == null){
+        person = users.get(dni);
+        if(person == null){
             System.out.println("The DNI you wrote is incorrect.");
         }
     }
@@ -91,22 +93,22 @@ public class PersonService {
     public void adoption(DoggyService dogser){
         //if there is a selected user and the dog pound isn't empty then it's
         //possible to do the adoption
-        if(p != null && dogser.availableDogs()){
-            p.adopt(dogser.dogSelection());
-            users.put(p.getDocument().toString(), p); //actualizar info en hashmap
+        if(person != null && dogser.availableDogs()){
+            person.adopt(dogser.dogSelection());
+            users.put(person.getDocument().toString(), person); //actualizar info en hashmap
             System.out.println("Full adoption!");
         } else {
             System.out.println("Unsuccesful operation.");
         }
     }
     
-    public void mostrarUsuario(){
-        System.out.println("\n--ADOPCIONES REALIZADAS--\n");
-        p.showAdoptedDogs();
+    public void showUser(){
+        System.out.println("\n--ADOPTIONS--\n");
+        person.showAdoptedDogs();
     }
     
-    public void salir(){
-        p = null;
+    public void signOut(){
+        person = null;
     }
     
 }

@@ -71,17 +71,15 @@ public class Person {
     /**
      * Method that keeps a dog in the hash map of dogs that belong to the person,
      * as it is a hash map, there cannot be more than one register of one dog.
-     * @param p
+     * @param d
      */
-    public void adopt(Entry<Integer, Dog> d) {
-        adoptedDogs.put(d.getKey(),d.getValue());
+    public void adopt(Entry<Integer, Dog> dog) {
+        adoptedDogs.put(dog.getKey(),dog.getValue());
     }
 
     /**
      * Method that generates a String with the information of the dogs that
      * belong to the person.
-     *
-     * @return String with Dog toString()'s
      */
     public void showAdoptedDogs() {
         if(adoptedDogs.size()>0){

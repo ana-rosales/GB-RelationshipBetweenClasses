@@ -21,13 +21,13 @@ public class ServicioDNI {
     
     public DNI createDNI(){
         System.out.println("Ingresando DNI.");
-        DNI documento = new DNI();
+        DNI document = new DNI();
         System.out.print("\tIngrese la serie: ");
-        documento.setSeries(ent.nextLine());
+        document.setSeries(ent.nextLine());
         System.out.print("\tIngrese el numero: ");
-        documento.setNum(ent.nextInt());
+        document.setNum(ent.nextInt());
         ent.nextLine();
-        return documento;
+        return document;
     }
     
     
