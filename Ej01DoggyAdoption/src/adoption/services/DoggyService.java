@@ -31,22 +31,21 @@ public class DoggyService {
     public void dogRegister() {
         Dog dog = dogCreation();
         getDogPound().put(getDogPound().size() + 101, dog);
-        System.out.println(getDogPound().size());
+        System.out.println("Registration complete!");
     }
 
     public Dog dogCreation() {
         System.out.println("\n -- DOG REGISTER --\n");
-        Dog dog = new Dog();
         System.out.print("Name: ");
-        dog.setName(ent.nextLine());
+        String name = ent.nextLine();
         System.out.print("Breed: ");
-        dog.setBreed(ent.nextLine());
+        String breed = ent.nextLine();
         System.out.print("Age: ");
-        dog.setAge(ent.nextInt());
+        int age = ent.nextInt();
         ent.nextLine();
         System.out.print("Size: ");
-        dog.setSize(ent.nextLine());
-        return dog;
+        String size = ent.nextLine();
+        return new Dog(name, breed, age, size);
     }
 
     /**
@@ -54,25 +53,19 @@ public class DoggyService {
      *
      * @return a dog.
      */
-    public Entry<Integer, Dog> dogSelection() {
+    public Dog dogSelection() {
         System.out.println("\n -- DOG SELECTION --\n");
         System.out.print("Dog's ID: ");
         int selection = ent.nextInt();
         ent.nextLine();
 
-        Entry<Integer, Dog> dog = null;
-        if (getDogPound().containsKey(selection)) {
-            for (Entry<Integer, Dog> entry : getDogPound().entrySet()) {
-                if (entry.getKey() == selection) {
-                    dog = entry;
-                    break;
-                }
+        for (Entry<Integer, Dog> entry : getDogPound().entrySet()) {
+            if (entry.getKey() == selection) {
+                return entry.getValue();
             }
-            return dog;
-        } else {
-            System.out.println("Dog not found.");
-            return dog;
         }
+        System.out.println("Dog not found.");
+        return null;
     }
 
     public boolean availableDogs() {

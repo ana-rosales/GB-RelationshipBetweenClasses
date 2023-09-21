@@ -1,7 +1,7 @@
 package adoption.entities;
 
 import java.util.HashMap;
-import java.util.Map.Entry;
+import java.util.HashSet;
 import java.util.Objects;
 
 public class Person {
@@ -12,20 +12,20 @@ public class Person {
 
     private int age;
 
-    private DNI document;
+    private String document;
 
-    private HashMap<Integer, Dog> adoptedDogs;
+    private HashSet<Dog> adoptedDogs;
 
-    public Person(String name, String lastName, int age, DNI document) {
+    public Person(String name, String lastName, int age, String document) {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
         this.document = document;
-        this.adoptedDogs = new HashMap<>();
+        this.adoptedDogs = new HashSet<>();
     }
 
     public Person() {
-        adoptedDogs = new HashMap<>();
+        adoptedDogs = new HashSet<>();
     }
 
     public String getName() {
@@ -52,19 +52,19 @@ public class Person {
         this.age = age;
     }
 
-    public DNI getDocument() {
+    public String getDocument() {
         return document;
     }
 
-    public void setDocument(DNI document) {
+    public void setDocument(String document) {
         this.document = document;
     }
 
-    public HashMap<Integer, Dog> getAdoptedDogs() {
+    public HashSet<Dog> getAdoptedDogs() {
         return adoptedDogs;
     }
 
-    public void setAdoptedDogs(HashMap<Integer, Dog> adoptedDogs) {
+    public void setAdoptedDogs(HashSet<Dog> adoptedDogs) {
         this.adoptedDogs = adoptedDogs;
     }
 
@@ -73,8 +73,8 @@ public class Person {
      * as it is a hash map, there cannot be more than one register of one dog.
      * @param d
      */
-    public void adopt(Entry<Integer, Dog> dog) {
-        adoptedDogs.put(dog.getKey(),dog.getValue());
+    public void adopt(Dog dog) {
+        adoptedDogs.add(dog);
     }
 
     /**
@@ -84,23 +84,12 @@ public class Person {
     public void showAdoptedDogs() {
         if(adoptedDogs.size()>0){
             System.out.println("\n -- ACQUIRED DOGS -- \n");
-            for (Dog dog: adoptedDogs.values()) {
-                System.out.println("\t - " + dog);
+            for (Dog adoptedDog : adoptedDogs) {
+                System.out.println(" - " + adoptedDog);
             }
         } else {
             System.out.println("You haven't got a puppy yet.");
         }
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + Objects.hashCode(this.name);
-        hash = 41 * hash + Objects.hashCode(this.lastName);
-        hash = 41 * hash + this.age;
-        hash = 41 * hash + Objects.hashCode(this.document);
-        hash = 41 * hash + Objects.hashCode(this.adoptedDogs);
-        return hash;
     }
 
     @Override
@@ -124,18 +113,18 @@ public class Person {
         if (!Objects.equals(this.lastName, other.lastName)) {
             return false;
         }
-        if (!Objects.equals(this.document, other.document)) {
-            return false;
+        if (Objects.equals(this.document, other.document)) {
+            return true;
         }
         if (!Objects.equals(this.adoptedDogs, other.adoptedDogs)) {
             return false;
-        }
+        }  
         return true;
     }
 
     @Override
     public String toString() {
-        return "User = " + name + " " + lastName + ", age= " + age + ", DNI= " + document;
+        return "DNI= " + document + ". " + name + " " + lastName;
     }
 
 }
