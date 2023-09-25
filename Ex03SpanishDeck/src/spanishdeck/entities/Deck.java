@@ -29,15 +29,22 @@ public class Deck {
     /**
      * Changes the order of each card on the deck randomly.
      */
-    protected void shuffle() {
+    public void shuffle() {
         Collections.shuffle(deck);
     }
 
     /**
-     * Moves the last card of the deck to the pile of cards.
+     * Returns the last card of the deck.
+     * @return a card.
      */
-    public void nextCard() {
-        pile.add(deck.remove(deck.size()));
+    public Card nextCard() {
+        if(deck.isEmpty()){
+            System.out.println("Deck is empty...");
+            return null;
+        }
+        Card out = deck.remove(deck.size()-1);
+        pile.add(out);
+        return out;
     }
 
     /**
@@ -54,11 +61,16 @@ public class Deck {
      * @return the specified number of cards in a list.
      */
     public ArrayList<Card> giveCards(int num) {
-        ArrayList<Card> cards = new ArrayList<>();
-        for (int i = 0; i < num; i++) {
-            cards.add(deck.remove(deck.size()));
+        if(deck.size() >= num){
+            ArrayList<Card> cards = new ArrayList<>();
+            for (int i = 0; i < num; i++) {
+                cards.add(deck.remove(deck.size()-1));
+            }
+            pile.addAll(cards);
+            return cards;
         }
-        return cards;
+        System.out.println("There are not enough cards.");
+        return null;
     }
 
     /**
@@ -79,7 +91,7 @@ public class Deck {
     public void showDeck() {
         System.out.println(toString());
     }
-
+    
     @Override
     public String toString() {
         return "Deck{" + "deck=" + deck + '}';

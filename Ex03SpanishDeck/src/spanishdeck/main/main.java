@@ -1,6 +1,7 @@
-
 package spanishdeck.main;
 
+import java.awt.BorderLayout;
+import java.util.Scanner;
 import spanishdeck.entities.Deck;
 
 /**
@@ -10,19 +11,54 @@ import spanishdeck.entities.Deck;
 public class main {
 
     public static void main(String[] args) {
-        //this is gonna be the start
-        //when the game starts should happen this.
-        //also create the players
-        
+        Scanner ent = new Scanner(System.in);
         Deck deck = new Deck();
+        boolean cont = true;
+        int opc;
         deck.showDeck();
-        deck.shuffle();
-        deck.showDeck();
-        //movements of a player
-        deck.nextCard();
-        deck.availableCards();
-        deck.cardsPile();
-        
+
+        do {
+            System.out.println("MENU.");
+            System.out.println("1. Shuffle.");
+            System.out.println("2. Next card.");
+            System.out.println("3. Show available cards.");
+            System.out.println("4. Request cards.");
+            System.out.println("5. Cards from the pile.");
+            System.out.println("6. Show deck.");
+            System.out.println("7. EXIT.");
+            opc = ent.nextInt();
+            ent.nextLine();
+            switch (opc) {
+                case 1:
+                    deck.shuffle();
+                    break;
+                case 2:
+                    deck.nextCard();
+                    break;
+                case 3:
+                    deck.availableCards();
+                    break;
+                case 4:
+                    System.out.print("How many cards do you want? :");
+                    int num = ent.nextInt();
+                    ent.nextLine();
+                    deck.giveCards(num);
+                    break;
+                case 5:
+                    deck.cardsPile();
+                    break;
+                case 6:
+                    deck.showDeck();
+                    break;
+                case 7:
+                    cont = false;
+                    break;
+                default:
+                    System.out.println("Choose a correct option.");
+            }
+            
+        } while (cont);
+
     }
-    
+
 }
